@@ -1,5 +1,5 @@
 public class lab1{
     public static void main(String[] args) {
-        System.out.println("Conflict Solution");
+        System.out.println("Hello World");
     }
 }
