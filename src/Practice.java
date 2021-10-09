@@ -1,5 +1,5 @@
 
-public class JP {
+public class Practice {
 	public static void main(String[] args) {
 		System.out.println("convert(5): " + convert(5));
 		System.out.println("points(13, 12): " + points(13, 12));
