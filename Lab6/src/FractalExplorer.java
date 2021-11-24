@@ -60,7 +60,7 @@ public class FractalExplorer {
             switch (chooseFractal.getSelectedItem().toString()) {
                 case "Mandelbrot" -> fg = new Mandelbrot();
                 case "Tricorn" -> fg = new Tricorn();
-                case "Burning Ship" -> fg = new BurningShip();
+                case "BurningShip" -> fg = new BurningShip();
             }
             fg.getInitialRange(area);
             drawFractal();
