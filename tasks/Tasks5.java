@@ -189,13 +189,6 @@ public class Tasks5 {
                 result += "o ";
             result += ("%" + (size - i) + "s").formatted("") + "\n";
         }
-        /*for (int i = size; i < size * 2; i++) {
-            result += ("%"+(size * 2 - i)+"s").formatted("");
-            for (int j = 0; j < i; j++)
-                result += "o ";
-            System.out.println((size * 2 - i - 1));
-            result += ("%"+(size * 2 - i)+"s").formatted("") + "\n";
-        }*/
         return result;
     }
 }
