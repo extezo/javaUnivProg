@@ -1,6 +1,7 @@
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Locale;
@@ -13,9 +14,10 @@ public class Tasks5 {
         System.out.println(canMove("Queen", "C4", "E6"));
         System.out.println(canComplete("bbutl", "beautiful"));
         System.out.println(sumDigProd(1, 2, 3, 4, 5, 6));
-        sameVowelGroup("1", "2");
+        sameVowelGroup("toe", "ocelot", "maniac");
         System.out.println(validateCard("1234567890123452"));
-        System.out.println(numToEng(50));
+        System.out.println(numToEng(929));
+        System.out.println(numToRus(626));
         System.out.println(getSha256Hash("password123"));
         System.out.println(correctTitle("TYRION LANNISTER, HAND OF THE QUEEN."));
         System.out.println(hexLattice(37));
@@ -75,7 +77,6 @@ public class Tasks5 {
         for (char c : word)
             if (c == input[i]) {
                 i++;
-                System.out.println(c);
             }
         return i == input.length;
     }
@@ -93,9 +94,19 @@ public class Tasks5 {
         return result;
     }
 
-    static String[] sameVowelGroup(String... words) {
-
-        return null;
+    public static String[] sameVowelGroup(String... strings) {
+        String vowels = "";
+        ArrayList<String> result = new ArrayList<String>();
+        for (char c : strings[0].toCharArray())
+            if (c == 'a' || c == 'e' || c == 'u' || c == 'i' || c == 'o' || c == 'y')
+                vowels += c;
+        m: for (String s : strings) {
+            for (char c : vowels.toCharArray())
+                if (!s.contains(c + ""))
+                    continue m;
+            result.add(s);
+        }
+        return result.toArray(new String[0]);
     }
 
     static boolean validateCard(String n) {
@@ -125,6 +136,24 @@ public class Tasks5 {
         else if (n < 100)
             return secondDigit[n / 10] + " " + firstDigit[n % 10];
         else return firstDigit[n / 100] + " hundred " + secondDigit[(n / 10) % 10] + " " + firstDigit[n % 10];
+    }
+
+    static String numToRus(int n) {
+        String[] firstDigit = {"", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять"};
+        String[] secondDigit1 = {"десять", "одиннадцать", "двенадцать", "тринадцать", "четырнадцать", "пятнадцать",
+                "шестнадцать", "семнадцать", "восемнадцать", "девятнадцатый"};
+        String[] secondDigit = {"", "", "двадцать", "тридцать", "сорок", "пятьдесят",
+                "шестьдесят", "семьдесят", "восемьдесят", "девяносто"};
+        String[] thirdDigit = {"", "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот"};
+        if (n == 0)
+            return "zero";
+        else if (n < 10)
+            return firstDigit[n];
+        else if (n < 20)
+            return secondDigit1[n % 10];
+        else if (n < 100)
+            return secondDigit[n / 10] + " " + firstDigit[n % 10];
+        else return thirdDigit[n / 100] + " " + secondDigit[(n / 10) % 10] + " " + firstDigit[n % 10];
     }
 
     static String getSha256Hash(String s) {

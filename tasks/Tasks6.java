@@ -236,7 +236,7 @@ public class Tasks6 {
             }
         }
         for (int i = 0; i < m; i++) {
-            if (result[i] != result[i]) {
+            if (result[i] != result[i+1]) {
                 return false;
             }
         }
